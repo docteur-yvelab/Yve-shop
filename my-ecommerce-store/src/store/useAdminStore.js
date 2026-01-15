@@ -23,6 +23,11 @@ export const useAdminStore = create(
         deleteProduct: (id) => set((state) => ({
             products: state.products.filter((p) => p.id !== id)
         })),
+        updateProduct: (id, updatedData) => set((state) => ({
+        products: state.products.map((p) => 
+            p.id === id ? { ...p, ...updatedData } : p
+            )
+        })),
         }),
         { name: 'admin-storage' }
     )
